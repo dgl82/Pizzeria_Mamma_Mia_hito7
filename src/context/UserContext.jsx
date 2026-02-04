@@ -3,7 +3,7 @@ import { Children, createContext, useState } from "react";
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState(true);
 
   const Login = () => {
     setToken(true);
@@ -14,7 +14,7 @@ const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ token, setToken }}>
+    <UserContext.Provider value={{ token, Logout }}>
       {children}
     </UserContext.Provider>
   );

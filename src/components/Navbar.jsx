@@ -6,29 +6,38 @@ import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
   const { total } = useContext(CartContext);
-  const { token } = useContext(UserContext);
+  const { token, Logout } = useContext(UserContext);
   const setActiveClass = ({ isActive }) =>
     `botonesBarra espaciado ${isActive ? "activo" : ""}`;
   return (
-    <div className="barra">
+    <div className="barra navbar">
       <div className="barra">
         Pizzería Mamma Mía!
         <NavLink to="/" className={setActiveClass}>
           🍕 Home
         </NavLink>
-        <Link to="/login">
+        {token ? (
+          <NavLink to="/login" className={setActiveClass} onClick={Logout}>
+            🔒 Logout
+          </NavLink>
+        ) : (
+          <NavLink to="/login" className={setActiveClass}>
+            🔒 Login
+          </NavLink>
+        )}
+        {/* <Link to="/login">
           <button className="botonesBarra espaciado">
             {token ? "🔒 Logout" : "🔐 Login"}
           </button>
-        </Link>
+        </Link> */}
         {token ? (
-          <Link to="/profile">
-            <button className="botonesBarra espaciado">🔓 Profile</button>
-          </Link>
+          <NavLink to="/profile" className={setActiveClass}>
+            🔓 Profile
+          </NavLink>
         ) : (
-          <Link to="/register">
-            <button className="botonesBarra espaciado">🔐 Register</button>
-          </Link>
+          <NavLink to="/register" className={setActiveClass}>
+            🔐 Register
+          </NavLink>
         )}
         {/* <button className="botonesBarra espaciado">
           {token ? "🔓 Profile" : "🔐 Register"}
