@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
@@ -6,13 +6,15 @@ import { CartContext } from "../context/CartContext";
 const Navbar = () => {
   const { total } = useContext(CartContext);
   const token = false;
+  const setActiveClass = ({ isActive }) =>
+    `botonesBarra espaciado ${isActive ? "activo" : ""}`;
   return (
     <div className="barra">
       <div className="barra">
         Pizzería Mamma Mía!
-        <Link to="/">
-          <button className="botonesBarra espaciado">🍕 Home</button>
-        </Link>
+        <NavLink to="/" className={setActiveClass}>
+          🍕 Home
+        </NavLink>
         <Link to="/login">
           <button className="botonesBarra espaciado">
             {token ? "🔒 Logout" : "🔐 Login"}
