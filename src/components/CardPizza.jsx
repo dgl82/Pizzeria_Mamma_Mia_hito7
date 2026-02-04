@@ -3,6 +3,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 const CardPizza = ({ detalles }) => {
   const { agregarPizza } = useContext(CartContext);
@@ -32,9 +33,11 @@ const CardPizza = ({ detalles }) => {
         </p>
 
         <div className="botonesSeparados">
-          <Button variant="light" className="botonVermas">
-            Ver más 👀
-          </Button>
+          <Link to={`/pizza/${detalles.id}`}>
+            <Button variant="light" className="botonVermas">
+              Ver más 👀
+            </Button>
+          </Link>
           <Button variant="dark" onClick={() => agregarPizza(detalles)}>
             Añadir 🛒
           </Button>

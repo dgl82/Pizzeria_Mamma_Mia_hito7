@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-// import "./Pizza.css";
+import { useParams } from "react-router";
 
 const Pizza = () => {
-  const [pizza, setPizza] = useState([]);
+  const [pizza, setPizza] = useState({});
+  const { id } = useParams();
 
   const getData = async () => {
-    const response = await fetch("http://localhost:5000/api/pizzas/p001");
+    const response = await fetch(`http://localhost:5000/api/pizzas/${id}`);
     const data = await response.json();
     setPizza(data);
   };
