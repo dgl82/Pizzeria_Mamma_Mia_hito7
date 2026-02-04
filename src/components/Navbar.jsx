@@ -2,10 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
   const { total } = useContext(CartContext);
-  const token = false;
+  const { token } = useContext(UserContext);
   const setActiveClass = ({ isActive }) =>
     `botonesBarra espaciado ${isActive ? "activo" : ""}`;
   return (

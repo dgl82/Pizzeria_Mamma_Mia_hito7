@@ -1,9 +1,11 @@
 import Button from "react-bootstrap/esm/Button";
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
 const Cart = () => {
   const { cart, total, agregarPizza, quitarPizza } = useContext(CartContext);
+  const { token } = useContext(UserContext);
 
   return (
     <div className="carro">
@@ -32,7 +34,7 @@ const Cart = () => {
           Total: $: {total.toLocaleString("es-CL")}
         </div>
         <div style={{ margin: "1rem" }}>
-          <Button>Pagar</Button>
+          <Button disabled={!token}>Pagar</Button>
         </div>
       </div>
     </div>
