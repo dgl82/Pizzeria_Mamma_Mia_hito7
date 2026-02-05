@@ -19,13 +19,19 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/register"
+          element={!token ? <RegisterPage /> : <Navigate to="/" replace />}
+        />
+        <Route
+          path="/login"
+          element={!token ? <LoginPage /> : <Navigate to="/" replace />}
+        />
         <Route path="/cart" element={<Cart />} />
         <Route path="/pizza/:id" element={<Pizza />} />
         <Route
           path="/profile"
-          element={token ? <Profile /> : <Navigate to="/login" />}
+          element={token ? <Profile /> : <Navigate to="/login" replace />}
         />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />

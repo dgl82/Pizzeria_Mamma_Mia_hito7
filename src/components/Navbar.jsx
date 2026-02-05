@@ -25,11 +25,6 @@ const Navbar = () => {
             🔒 Login
           </NavLink>
         )}
-        {/* <Link to="/login">
-          <button className="botonesBarra espaciado">
-            {token ? "🔒 Logout" : "🔐 Login"}
-          </button>
-        </Link> */}
         {token ? (
           <NavLink to="/profile" className={setActiveClass}>
             🔓 Profile
@@ -39,9 +34,6 @@ const Navbar = () => {
             🔐 Register
           </NavLink>
         )}
-        {/* <button className="botonesBarra espaciado">
-          {token ? "🔓 Profile" : "🔐 Register"}
-        </button> */}
       </div>
       <div>
         <Link to="/cart">

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 
 const LoginPage = () => {
-  const { token, Login } = useContext(UserContext);
+  const { Login } = useContext(UserContext);
   const [form, setForm] = useState({
     email: "",
     password: "",
