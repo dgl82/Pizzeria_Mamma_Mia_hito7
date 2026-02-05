@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../context/UserContext";
 
 const LoginPage = () => {
+  const { token, Login } = useContext(UserContext);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -61,7 +63,7 @@ const LoginPage = () => {
         {error.correcto ? (
           <p className="correcto">Inicio de sesión exitoso</p>
         ) : null}
-        <button className="boton" type="submit">
+        <button className="boton" type="submit" onClick={Login}>
           Login
         </button>
       </form>
